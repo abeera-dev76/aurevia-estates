@@ -90,25 +90,39 @@ function getSheetsClient() {
     }
   }
 
-  // 2. Check local or specified keyFile paths
+  // 2. Check local or specified keyFile paths (including downloaded GCP JSON files)
   if (!auth) {
-    const defaultKeyPath = path.resolve(__dirname, '..', 'service-account.json');
+    const serverDir = path.resolve(__dirname, '..');
+    const defaultKeyPath = path.join(serverDir, 'service-account.json');
+
+    // Resolve GOOGLE_APPLICATION_CREDENTIALS to an absolute path
     const envKeyPath = process.env.GOOGLE_APPLICATION_CREDENTIALS
       ? (path.isAbsolute(process.env.GOOGLE_APPLICATION_CREDENTIALS)
           ? process.env.GOOGLE_APPLICATION_CREDENTIALS
-          : path.resolve(__dirname, '..', process.env.GOOGLE_APPLICATION_CREDENTIALS))
-      : defaultKeyPath;
+          : path.join(serverDir, process.env.GOOGLE_APPLICATION_CREDENTIALS))
+      : null;
 
-    if (fs.existsSync(envKeyPath)) {
-      auth = new google.auth.GoogleAuth({
-        keyFile: envKeyPath,
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
-    } else if (fs.existsSync(defaultKeyPath)) {
-      auth = new google.auth.GoogleAuth({
-        keyFile: defaultKeyPath,
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
+    // Scan server directory for any downloaded GCP service-account JSON files
+    // (e.g. aurevia-estates-<project>-<hash>.json) as an additional fallback
+    let downloadedKeyPath = null;
+    try {
+      const entries = fs.readdirSync(serverDir);
+      const gcpFile = entries.find(
+        f => /^[a-z0-9-]+-[0-9a-f]{8,}\.json$/i.test(f) && f !== 'package.json' && f !== 'package-lock.json'
+      );
+      if (gcpFile) downloadedKeyPath = path.join(serverDir, gcpFile);
+    } catch (_) { /* ignore read errors */ }
+
+    // Priority: env var > service-account.json > downloaded GCP JSON
+    const candidatePaths = [envKeyPath, defaultKeyPath, downloadedKeyPath].filter(Boolean);
+    for (const candidate of candidatePaths) {
+      if (fs.existsSync(candidate)) {
+        auth = new google.auth.GoogleAuth({
+          keyFile: candidate,
+          scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+        break;
+      }
     }
   }
 
