@@ -6,6 +6,56 @@ const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID || '1FaJs1OEjF5MMgO_WfUtSdIQq
 const SHEET_NAME = 'Inquiries';
 
 /**
+ * Normalizes and formats a PEM private key from various environment variable formats.
+ * Handles escaped newlines (\n, \\n, \r\n), literal newlines, optional surrounding quotes,
+ * single-line space-separated PEM lines, and OpenSSL PKCS#8 formatting requirements.
+ */
+function formatPrivateKey(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  let key = raw.trim();
+
+  // Strip wrapping quotes (single, double, or backticks)
+  key = key.replace(/^["'`]+|["'`]+$/g, '').trim();
+
+  // Unescape double or single escaped newlines
+  key = key.replace(/\\\\n/g, '\n').replace(/\\n/g, '\n').replace(/\r\n/g, '\n');
+
+  // Strip any remaining wrapping quotes after newline unescaping
+  key = key.replace(/^["'`]+|["'`]+$/g, '').trim();
+
+  // Look for standard PEM header and footer
+  const headerMatch = key.match(/-----BEGIN [A-Z ]+KEY-----/);
+  const footerMatch = key.match(/-----END [A-Z ]+KEY-----/);
+
+  if (headerMatch && footerMatch) {
+    const header = headerMatch[0];
+    const footer = footerMatch[0];
+    const headerIndex = key.indexOf(header);
+    const footerIndex = key.indexOf(footer);
+
+    // Extract base64 content between header and footer
+    const bodyRaw = key.substring(headerIndex + header.length, footerIndex);
+
+    // Strip all whitespace, spaces, newlines, and tabs from base64 content
+    const cleanBase64 = bodyRaw.replace(/[\s\r\n\t]+/g, '');
+
+    // Reconstruct valid 64-character PEM lines compliant with OpenSSL / Node crypto
+    const chunks = cleanBase64.match(/.{1,64}/g) || [];
+    key = `${header}\n${chunks.join('\n')}\n${footer}\n`;
+  }
+
+  return key;
+}
+
+/**
+ * Cleans and trims an email address, stripping any accidental surrounding quotes.
+ */
+function cleanEmail(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+  return raw.trim().replace(/^["'`]+|["'`]+$/g, '').trim();
+}
+
+/**
  * Returns an authenticated Google Sheets client using Google Service Account credentials.
  * Works seamlessly in both local environments (reading service-account.json) and
  * Vercel serverless environments (reading environment variables).
@@ -26,10 +76,11 @@ function getSheetsClient() {
         parsed = JSON.parse(decoded);
       }
       if (parsed.client_email && parsed.private_key) {
+        const privateKey = formatPrivateKey(parsed.private_key);
         auth = new google.auth.GoogleAuth({
           credentials: {
-            client_email: parsed.client_email,
-            private_key: parsed.private_key.replace(/\\n/g, '\n'),
+            client_email: cleanEmail(parsed.client_email),
+            private_key: privateKey,
           },
           scopes: ['https://www.googleapis.com/auth/spreadsheets'],
         });
@@ -63,22 +114,12 @@ function getSheetsClient() {
 
   // 3. Check individual environment variables (GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY)
   if (!auth && process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-    let privateKey = process.env.GOOGLE_PRIVATE_KEY.trim();
-
-    // Strip surrounding quotes if included in Vercel environment variable value
-    if (
-      (privateKey.startsWith('"') && privateKey.endsWith('"')) ||
-      (privateKey.startsWith("'") && privateKey.endsWith("'"))
-    ) {
-      privateKey = privateKey.slice(1, -1);
-    }
-
-    // Convert escaped newlines to actual newlines
-    privateKey = privateKey.replace(/\\n/g, '\n').replace(/\r\n/g, '\n');
+    const clientEmail = cleanEmail(process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
+    const privateKey = formatPrivateKey(process.env.GOOGLE_PRIVATE_KEY);
 
     auth = new google.auth.GoogleAuth({
       credentials: {
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL.trim(),
+        client_email: clientEmail,
         private_key: privateKey,
       },
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
@@ -161,4 +202,4 @@ async function appendInquiry(data) {
   return response.data;
 }
 
-module.exports = { appendInquiry, testConnection, getSheetsClient };
+module.exports = { appendInquiry, testConnection, getSheetsClient, formatPrivateKey, cleanEmail };

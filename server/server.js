@@ -10,6 +10,11 @@ const healthRouter = require('./routes/health');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ── Proxy Configuration for Vercel / Reverse Proxies ─────────────────────────
+// Trust the first proxy hop (Vercel edge) so req.ip is correctly derived from
+// X-Forwarded-For without blindly trusting arbitrary spoofed upstream headers.
+app.set('trust proxy', 1);
+
 // ── CORS ────────────────────────────────────────────────────────────────────
 // Allow localhost, any Vercel domain, and any configured custom client domains
 const allowedOrigins = [
@@ -53,6 +58,7 @@ const globalLimiter = rateLimit({
   max: 300,
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { xForwardedForHeader: false },
   message: { success: false, message: 'Too many requests. Please try again later.' },
 });
 app.use(globalLimiter);

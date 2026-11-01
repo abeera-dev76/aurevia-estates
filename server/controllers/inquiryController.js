@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 const formLimiter = rateLimit({
   windowMs: 10 * 60 * 1000,
   max: 60,
+  validate: { xForwardedForHeader: false },
   message: { success: false, message: 'Too many submissions. Please wait before trying again.' },
 });
 
