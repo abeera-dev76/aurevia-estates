@@ -17,6 +17,8 @@ server/.env
 !package.json
 !package-lock.json
 !tsconfig.json
+!vercel.json
+!**/vercel.json
 service-account*.json
 server/service-account.json
 **/service-account*.json

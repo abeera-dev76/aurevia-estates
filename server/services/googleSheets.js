@@ -7,42 +7,88 @@ const SHEET_NAME = 'Inquiries';
 
 /**
  * Returns an authenticated Google Sheets client using Google Service Account credentials.
- * Resolves credential path relative to the server directory so it functions consistently
- * regardless of the working directory from which node is invoked.
+ * Works seamlessly in both local environments (reading service-account.json) and
+ * Vercel serverless environments (reading environment variables).
  */
 function getSheetsClient() {
   let auth;
 
-  // 1. Check for service account JSON file path (configured via env or default location)
-  const defaultKeyPath = path.resolve(__dirname, '..', 'service-account.json');
-  const envKeyPath = process.env.GOOGLE_APPLICATION_CREDENTIALS
-    ? path.resolve(__dirname, '..', process.env.GOOGLE_APPLICATION_CREDENTIALS)
-    : defaultKeyPath;
+  // 1. Check if complete service account JSON is passed via env var (raw JSON string or base64)
+  const rawKeyJson = process.env.GOOGLE_SERVICE_ACCOUNT_KEY || process.env.GOOGLE_CREDENTIALS;
+  if (rawKeyJson) {
+    try {
+      let parsed;
+      const trimmed = rawKeyJson.trim();
+      if (trimmed.startsWith('{')) {
+        parsed = JSON.parse(trimmed);
+      } else {
+        const decoded = Buffer.from(trimmed, 'base64').toString('utf8');
+        parsed = JSON.parse(decoded);
+      }
+      if (parsed.client_email && parsed.private_key) {
+        auth = new google.auth.GoogleAuth({
+          credentials: {
+            client_email: parsed.client_email,
+            private_key: parsed.private_key.replace(/\\n/g, '\n'),
+          },
+          scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+      }
+    } catch (e) {
+      console.warn('[GoogleSheets] Notice: Could not parse GOOGLE_SERVICE_ACCOUNT_KEY JSON string.');
+    }
+  }
 
-  if (fs.existsSync(envKeyPath)) {
-    auth = new google.auth.GoogleAuth({
-      keyFile: envKeyPath,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-  } else if (fs.existsSync(defaultKeyPath)) {
-    auth = new google.auth.GoogleAuth({
-      keyFile: defaultKeyPath,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-  } else if (process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-    // 2. Fallback to direct environment variables
-    const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n');
+  // 2. Check local or specified keyFile paths
+  if (!auth) {
+    const defaultKeyPath = path.resolve(__dirname, '..', 'service-account.json');
+    const envKeyPath = process.env.GOOGLE_APPLICATION_CREDENTIALS
+      ? (path.isAbsolute(process.env.GOOGLE_APPLICATION_CREDENTIALS)
+          ? process.env.GOOGLE_APPLICATION_CREDENTIALS
+          : path.resolve(__dirname, '..', process.env.GOOGLE_APPLICATION_CREDENTIALS))
+      : defaultKeyPath;
+
+    if (fs.existsSync(envKeyPath)) {
+      auth = new google.auth.GoogleAuth({
+        keyFile: envKeyPath,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+      });
+    } else if (fs.existsSync(defaultKeyPath)) {
+      auth = new google.auth.GoogleAuth({
+        keyFile: defaultKeyPath,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+      });
+    }
+  }
+
+  // 3. Check individual environment variables (GOOGLE_SERVICE_ACCOUNT_EMAIL & GOOGLE_PRIVATE_KEY)
+  if (!auth && process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY.trim();
+
+    // Strip surrounding quotes if included in Vercel environment variable value
+    if (
+      (privateKey.startsWith('"') && privateKey.endsWith('"')) ||
+      (privateKey.startsWith("'") && privateKey.endsWith("'"))
+    ) {
+      privateKey = privateKey.slice(1, -1);
+    }
+
+    // Convert escaped newlines to actual newlines
+    privateKey = privateKey.replace(/\\n/g, '\n').replace(/\r\n/g, '\n');
+
     auth = new google.auth.GoogleAuth({
       credentials: {
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL.trim(),
         private_key: privateKey,
       },
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
-  } else {
+  }
+
+  if (!auth) {
     throw new Error(
-      'Google Sheets service account credentials not found. ' +
-      'Please ensure server/service-account.json exists or configure GOOGLE_APPLICATION_CREDENTIALS.'
+      'Google Sheets service account credentials are not configured. ' +
+      'Please configure GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY (or GOOGLE_SERVICE_ACCOUNT_KEY) in environment variables.'
     );
   }
 

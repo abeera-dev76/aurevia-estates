@@ -9,6 +9,21 @@ const formLimiter = rateLimit({
   message: { success: false, message: 'Too many submissions. Please wait before trying again.' },
 });
 
+function handleSheetsError(err, res) {
+  console.error('[Inquiry Error]', err.message);
+  const msg = err.message ? err.message.toLowerCase() : '';
+  if (msg.includes('credentials') || msg.includes('not configured')) {
+    return res.status(503).json({
+      success: false,
+      message: 'Google Sheets credentials are not configured on the server. Please configure GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY in your environment variables.',
+    });
+  }
+  return res.status(500).json({
+    success: false,
+    message: 'Failed to save inquiry to Google Sheets. Please try again.',
+  });
+}
+
 // ── POST /api/inquiries ──────────────────────────────────────────────────────
 async function submitInquiry(req, res) {
   try {
@@ -45,11 +60,7 @@ async function submitInquiry(req, res) {
       inquiryId,
     });
   } catch (err) {
-    console.error('[submitInquiry] Error:', err.message);
-    if (err.message.includes('credentials are not configured')) {
-      return res.status(503).json({ success: false, message: 'Google Sheets is not configured on the server.' });
-    }
-    return res.status(500).json({ success: false, message: 'Failed to save inquiry. Please try again.' });
+    return handleSheetsError(err, res);
   }
 }
 
@@ -82,11 +93,7 @@ async function submitContact(req, res) {
 
     return res.status(201).json({ success: true, message: 'Message sent successfully.', inquiryId });
   } catch (err) {
-    console.error('[submitContact] Error:', err.message);
-    if (err.message.includes('credentials are not configured')) {
-      return res.status(503).json({ success: false, message: 'Google Sheets is not configured on the server.' });
-    }
-    return res.status(500).json({ success: false, message: 'Failed to send message. Please try again.' });
+    return handleSheetsError(err, res);
   }
 }
 
@@ -120,11 +127,7 @@ async function bookVisit(req, res) {
 
     return res.status(201).json({ success: true, message: 'Visit booking request submitted.', inquiryId });
   } catch (err) {
-    console.error('[bookVisit] Error:', err.message);
-    if (err.message.includes('credentials are not configured')) {
-      return res.status(503).json({ success: false, message: 'Google Sheets is not configured on the server.' });
-    }
-    return res.status(500).json({ success: false, message: 'Failed to book visit. Please try again.' });
+    return handleSheetsError(err, res);
   }
 }
 
@@ -164,11 +167,7 @@ async function sellProperty(req, res) {
 
     return res.status(201).json({ success: true, message: 'Sell request submitted successfully.', inquiryId });
   } catch (err) {
-    console.error('[sellProperty] Error:', err.message);
-    if (err.message.includes('credentials are not configured')) {
-      return res.status(503).json({ success: false, message: 'Google Sheets is not configured on the server.' });
-    }
-    return res.status(500).json({ success: false, message: 'Failed to submit sell request. Please try again.' });
+    return handleSheetsError(err, res);
   }
 }
 
@@ -201,11 +200,7 @@ async function contactAgent(req, res) {
 
     return res.status(201).json({ success: true, message: 'Agent inquiry submitted.', inquiryId });
   } catch (err) {
-    console.error('[contactAgent] Error:', err.message);
-    if (err.message.includes('credentials are not configured')) {
-      return res.status(503).json({ success: false, message: 'Google Sheets is not configured on the server.' });
-    }
-    return res.status(500).json({ success: false, message: 'Failed to send agent inquiry. Please try again.' });
+    return handleSheetsError(err, res);
   }
 }
 

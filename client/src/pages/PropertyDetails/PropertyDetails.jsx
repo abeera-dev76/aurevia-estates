@@ -171,12 +171,6 @@ export default function PropertyDetails() {
                   propertyId={property.id}
                   propertyTitle={property.title}
                   onSubmitFn={bookVisit}
-                  extraFields={
-                    <div className="form-group">
-                      <label className="form-label">Preferred Visit Date</label>
-                      <input type="date" className="form-control" min={new Date().toISOString().split('T')[0]} />
-                    </div>
-                  }
                 />
               )}
             </motion.div>

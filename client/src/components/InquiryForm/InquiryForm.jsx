@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function InquiryForm({
   title = 'Send an Inquiry',
@@ -9,7 +9,7 @@ export default function InquiryForm({
   onSubmitFn,
   extraFields = null,
 }) {
-  const [form, setForm] = useState({ name:'', phone:'', email:'', location:'', message:'' });
+  const [form, setForm] = useState({ name:'', phone:'', email:'', location:'', message:'', preferredDate:'' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
   const [serverMsg, setServerMsg] = useState('');
@@ -38,7 +38,7 @@ export default function InquiryForm({
       const res = await onSubmitFn(payload);
       setInquiryId(res.data?.inquiryId || '');
       setStatus('success');
-      setForm({ name:'', phone:'', email:'', location:'', message:'' });
+      setForm({ name:'', phone:'', email:'', location:'', message:'', preferredDate:'' });
     } catch (err) {
       const msgs = err.response?.data?.errors;
       if (msgs?.length) setServerMsg(msgs.join(' '));
@@ -69,6 +69,19 @@ export default function InquiryForm({
 
       {extraFields}
 
+      {inquiryType === 'Property Visit' && (
+        <div className="form-group">
+          <label className="form-label">Preferred Visit Date</label>
+          <input
+            className="form-control"
+            type="date"
+            min={new Date().toISOString().split('T')[0]}
+            value={form.preferredDate}
+            onChange={e => set('preferredDate', e.target.value)}
+          />
+        </div>
+      )}
+
       <div className="grid-2" style={{ gap:16 }}>
         <div className="form-group">
           <label className="form-label">Full Name <span className="req">*</span></label>
@@ -94,7 +107,7 @@ export default function InquiryForm({
         {errors.email && <p className="form-error">{errors.email}</p>}
       </div>
 
-      {inquiryType !== 'General Inquiry' && (
+      {inquiryType !== 'General Inquiry' && inquiryType !== 'Property Visit' && (
         <div className="form-group">
           <label className="form-label">Preferred Location</label>
           <input className="form-control" type="text" placeholder="City, District…" value={form.location}
