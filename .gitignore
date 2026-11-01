@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files - NEVER COMMIT
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+
+# Google Service Account credentials - NEVER COMMIT
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+service-account*.json
+server/service-account.json
+**/service-account*.json
+google-credentials*.json
+credentials.json
+
+# Build output
+client/dist/
+client/build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Uploads
+server/uploads/

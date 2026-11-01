@@ -1,0 +1,10 @@
+.sell-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+.form-section-title { font-size: 1rem; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px; }
+.upload-area { border: 2px dashed var(--border); border-radius: var(--radius-sm); padding: 32px; text-align: center; background: var(--bg-light); }
+.upload-area p { color: var(--text-muted); font-size: 0.875rem; margin-top: 10px; }
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.info-card h3 { margin-bottom: 18px; color: var(--primary); font-size: 1rem; }
+.sell-step { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 0.875rem; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+.why-item { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 0.875rem; }
+@media (max-width: 900px) { .sell-layout { grid-template-columns: 1fr; } }
