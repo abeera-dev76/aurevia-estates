@@ -71,7 +71,7 @@ export default function SearchBar({ onSearch, compact = false }) {
             <span className="field-label">Location / Landmark</span>
             <input
               type="text"
-              placeholder="e.g. Al Malqa, Riyadh, Jeddah Corniche…"
+              placeholder="e.g. F-7 Islamabad, DHA Lahore, Bahria Town Rawalpindi…"
               value={filters.search}
               onChange={e => set('search', e.target.value)}
             />

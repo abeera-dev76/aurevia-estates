@@ -70,37 +70,37 @@ const milestones = [
     year: '2012',
     title: 'Foundation',
     description:
-      'Aurevia Estates was founded in Riyadh with a single office and a bold vision: to redefine luxury real estate in the Kingdom.',
+      'Aurevia Estates was founded in Islamabad with a single office and a bold vision: to redefine luxury real estate across Pakistan\'s premier urban markets.',
   },
   {
     year: '2015',
-    title: 'Jeddah Expansion',
+    title: 'Lahore Expansion',
     description:
-      'We opened our Jeddah branch on the iconic Corniche, extending our premium services to the Western Region and its thriving coastal market.',
+      'We extended our premium services to Lahore, establishing a presence in DHA and Gulberg to serve Pakistan\'s largest luxury residential and commercial market.',
   },
   {
     year: '2018',
     title: '200 Properties Milestone',
     description:
-      'We celebrated the sale and management of our 200th property — a testament to the trust our clients place in our team.',
+      'We celebrated the sale and management of our 200th property — a testament to the trust our clients place in our team across Islamabad, Rawalpindi, and Lahore.',
   },
   {
     year: '2020',
     title: 'Investment Advisory Launch',
     description:
-      'Responding to growing demand, we launched a dedicated Investment Advisory division to help clients maximise portfolio returns.',
+      'Responding to growing demand, we launched a dedicated Investment Advisory division to help clients maximise portfolio returns across Pakistan\'s rapidly growing property sector.',
   },
   {
     year: '2022',
-    title: 'NEOM & Future Cities',
+    title: 'Rawalpindi & Bahria Expansion',
     description:
-      'Aurevia became an authorised sales partner for future-city developments, including early-stage NEOM projects in the Tabuk Region.',
+      'Aurevia expanded its coverage into Rawalpindi\'s Bahria Town and Chaklala sectors, bringing our bespoke advisory services to Pakistan\'s fastest-growing luxury residential communities.',
   },
   {
     year: '2024',
     title: 'Digital Transformation',
     description:
-      'We launched our fully integrated digital platform, giving clients real-time access to listings, valuations, and agent consultations.',
+      'We launched our fully integrated digital platform, giving clients real-time access to listings, valuations, and agent consultations across all three cities.',
   },
 ];
 
@@ -124,7 +124,7 @@ export default function About() {
             </motion.h1>
             <motion.p variants={fadeUp}>
               Twelve years of crafting extraordinary real estate experiences across
-              the Kingdom of Saudi Arabia — built on expertise, trust, and an
+              Pakistan's premier cities — Islamabad, Lahore, and Rawalpindi — built on expertise, trust, and an
               unyielding passion for excellence.
             </motion.p>
             <motion.nav variants={fadeUp} className="breadcrumb">
@@ -156,29 +156,29 @@ export default function About() {
                 deserves a luxury experience — from start to finish.
               </p>
               <p className="story-text">
-                Founded in Riyadh in 2012, we set out to challenge the status quo
-                of property transactions in Saudi Arabia. Where others offered
+                Founded in Islamabad in 2012, we set out to challenge the status quo
+                of property transactions in Pakistan. Where others offered
                 listings, we offered guidance. Where others rushed closings, we
-                built relationships. Today, Aurevia Estates stands as one of the
-                Kingdom's most trusted names in premium residential and commercial
-                real estate, with offices in Riyadh, Jeddah, and NEOM.
+                built relationships. Today, Aurevia Estates stands as one of
+                Pakistan's most trusted names in premium residential and commercial
+                real estate, with advisory representations in Islamabad, Lahore, and Rawalpindi.
               </p>
               <p className="story-text">
                 Our team of highly qualified consultants brings decades of combined
                 experience across every segment of the market — from palatial villas
-                and waterfront apartments to landmark commercial buildings and
-                future-city investments. We are proud to serve Saudi families,
-                regional investors, and global corporations alike.
+                and penthouse apartments to landmark commercial buildings and
+                emerging investment corridors. We are proud to serve Pakistani families,
+                regional investors, and international corporations alike.
               </p>
               <div className="story-badges">
                 <span className="story-badge">
-                  <Award size={15} /> RERA Certified
+                  <Award size={15} /> Certified Excellence
                 </span>
                 <span className="story-badge">
                   <Users size={15} /> 1,000+ Happy Clients
                 </span>
                 <span className="story-badge">
-                  <TrendingUp size={15} /> SAR 2B+ in Transactions
+                  <TrendingUp size={15} /> PKR 2B+ in Transactions
                 </span>
               </div>
             </motion.div>
@@ -197,7 +197,7 @@ export default function About() {
               />
               <div className="story-img-badge">
                 <strong>Est. 2012</strong>
-                <span>Riyadh, KSA</span>
+                <span>Islamabad, Pakistan</span>
               </div>
             </motion.div>
           </div>
@@ -296,9 +296,9 @@ export default function About() {
             <span className="section-label">Our Journey</span>
             <h2 className="serif section-title">Key Milestones</h2>
             <p className="section-subtitle">
-              Over twelve years, we have grown from a single office to a
-              full-service luxury real estate group shaping the Kingdom's
-              property landscape.
+              Over twelve years, we have grown from a single Islamabad office to a
+              full-service luxury real estate group shaping Pakistan's
+              property landscape across its three most prestigious cities.
             </p>
           </motion.div>
 

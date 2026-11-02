@@ -21,8 +21,8 @@ export default function Footer() {
           </div>
           <div className="prestige-sep" />
           <div className="prestige-item">
-            <span className="prestige-title">REGA Licensed</span>
-            <span className="prestige-desc">Saudi Arabia verified brokerage partner</span>
+            <span className="prestige-title">Premier Luxury Brokerage</span>
+            <span className="prestige-desc">Pakistan's trusted premium property partner</span>
           </div>
         </div>
       </div>
@@ -43,11 +43,11 @@ export default function Footer() {
                 </div>
                 <div className="footer-logo-text">
                   <span className="footer-brand-name">AUREVIA</span>
-                  <span className="footer-brand-sub">ESTATES • SAUDI ARABIA</span>
+                  <span className="footer-brand-sub">ESTATES • PAKISTAN</span>
                 </div>
               </Link>
               <p className="footer-intro">
-                Aurevia Estates curates extraordinary residences and architectural landmarks across the Kingdom of Saudi Arabia. Committed to privacy, discretion, and uncompromising refinement.
+                Aurevia Estates curates extraordinary residences and architectural landmarks across Pakistan's premier cities — Islamabad, Lahore, and Rawalpindi. Committed to privacy, discretion, and uncompromising refinement.
               </p>
               <div className="footer-social-links">
                 {/* Instagram */}
@@ -109,15 +109,19 @@ export default function Footer() {
             <div className="footer-offices-col">
               <h4>Private Offices</h4>
               <div className="office-item">
-                <div className="office-city"><MapPin size={14} className="office-icon" /> Riyadh Headquarters</div>
-                <div className="office-addr">Al Olaya Towers, Level 28, King Fahd Road, Riyadh 12213</div>
+                <div className="office-city"><MapPin size={14} className="office-icon" /> Islamabad Advisory</div>
+                <div className="office-addr">Blue Area & Diplomatic Enclave Representation, Islamabad</div>
               </div>
               <div className="office-item">
-                <div className="office-city"><MapPin size={14} className="office-icon" /> Jeddah Gallery</div>
-                <div className="office-addr">Corniche Promenade, Al Shati District, Jeddah 23414</div>
+                <div className="office-city"><MapPin size={14} className="office-icon" /> Lahore Advisory</div>
+                <div className="office-addr">DHA & Gulberg Sector Representation, Lahore</div>
+              </div>
+              <div className="office-item">
+                <div className="office-city"><MapPin size={14} className="office-icon" /> Rawalpindi Advisory</div>
+                <div className="office-addr">Bahria Town & Chaklala Representation, Rawalpindi</div>
               </div>
               <div className="footer-direct-contact">
-                <a href="tel:+966112345678" className="footer-phone"><Phone size={14} /> +966 11 234 5678</a>
+                <a href="tel:+925128900001" className="footer-phone"><Phone size={14} /> +92 51 289 0001</a>
                 <a href="mailto:info@aureviaestates.com" className="footer-email"><Mail size={14} /> info@aureviaestates.com</a>
               </div>
             </div>
@@ -129,7 +133,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <p className="copyright">
-            © {year} Aurevia Estates. All rights reserved. Registered with the Saudi Real Estate General Authority (REGA).
+            © {year} Aurevia Estates. All rights reserved. Premier Luxury Real Estate — Pakistan.
           </p>
           <div className="footer-legal-links">
             <Link to="/privacy-policy">Privacy Policy</Link>

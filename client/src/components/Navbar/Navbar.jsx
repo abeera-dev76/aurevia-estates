@@ -44,10 +44,10 @@ export default function Navbar() {
         <div className="container top-bar-inner">
           <div className="top-bar-left">
             <span className="top-badge"><ShieldCheck size={12} /> Verified Agency</span>
-            <span className="top-text">Riyadh • Jeddah • NEOM Private Portfolio</span>
+            <span className="top-text">Islamabad • Lahore • Rawalpindi Luxury Portfolio</span>
           </div>
           <div className="top-bar-right">
-            <a href="tel:+966112345678" className="top-link"><Phone size={12} /> +966 11 234 5678</a>
+            <a href="tel:+925128900001" className="top-link"><Phone size={12} /> +92 51 289 0001</a>
             <span className="top-sep">|</span>
             <a href="mailto:info@aureviaestates.com" className="top-link"><Mail size={12} /> info@aureviaestates.com</a>
           </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
             </div>
             <div className="logo-text-block">
               <span className="logo-brand">AUREVIA</span>
-              <span className="logo-sub">ESTATES • SAUDI ARABIA</span>
+              <span className="logo-sub">ESTATES • PAKISTAN</span>
             </div>
           </Link>
 
@@ -156,7 +156,7 @@ export default function Navbar() {
                 Schedule Consultation
               </Link>
               <div className="mobile-contact-info">
-                <div><Phone size={13} /> +966 11 234 5678</div>
+                <div><Phone size={13} /> +92 51 289 0001</div>
                 <div><Mail size={13} /> info@aureviaestates.com</div>
               </div>
             </div>

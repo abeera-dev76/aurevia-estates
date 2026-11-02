@@ -44,7 +44,7 @@ const SERVICES = [
   {
     icon: TrendingUp,
     title: 'Private Wealth Advisory',
-    desc: 'Strategic portfolio structuring, capital preservation, and capital growth across the Kingdom.'
+    desc: 'Strategic portfolio structuring, capital preservation, and capital growth across Pakistan\'s premier property markets.'
   },
   {
     icon: Shield,
@@ -54,10 +54,10 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { value: 'SAR 4.8B+', label: 'Transacted Portfolio' },
-  { value: '15+ Years', label: 'Kingdom-Wide Discretion' },
+  { value: 'PKR 48B+', label: 'Transacted Portfolio' },
+  { value: '12+ Years', label: 'Pakistan-Wide Discretion' },
   { value: '99.4%', label: 'Private Client Retention' },
-  { value: '2 Flagships', label: 'Riyadh & Jeddah Galleries' },
+  { value: '3 Cities', label: 'Islamabad, Lahore & Rawalpindi' },
 ];
 
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <div className="home-page">
 
-      {/* ── HERO SECTION ─────────────────────────────────────── */}
+      {/* â”€â”€ HERO SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="hero">
         <div className="hero-overlay" />
         <div className="hero-pattern" />
@@ -82,7 +82,7 @@ export default function Home() {
             className="hero-label-badge"
           >
             <Sparkles size={13} className="hero-star" />
-            <span>Saudi Arabia's Premier Luxury Brokerage</span>
+            <span>Pakistan's Premier Luxury Brokerage</span>
           </motion.div>
 
           <motion.h1
@@ -103,7 +103,7 @@ export default function Home() {
             custom={2}
             className="hero-subtitle"
           >
-            Aurevia Estates curates the Kingdom’s most distinguished residential compounds, skyline penthouses, and commercial trophy assets. Experience real estate redefined by discretion and distinction.
+            Aurevia Estates curates Pakistan's most distinguished residential estates, skyline penthouses, and commercial trophy assets across Islamabad, Lahore, and Rawalpindi. Experience real estate redefined by discretion and distinction.
           </motion.p>
 
           <motion.div
@@ -136,7 +136,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── STATS / PRESTIGE STRIP ───────────────────────────── */}
+      {/* â”€â”€ STATS / PRESTIGE STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="stats-bar">
         <div className="container">
           <div className="stats-grid">
@@ -157,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CURATED CATEGORIES ───────────────────────────────── */}
+      {/* â”€â”€ CURATED CATEGORIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section categories-section">
         <div className="container">
           <div className="section-header">
@@ -231,7 +231,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED ESTATES ─────────────────────────────────── */}
+      {/* â”€â”€ FEATURED ESTATES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section featured-section bg-ivory">
         <div className="container">
           <div className="section-header">
@@ -257,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── THE AUREVIA DIFFERENCE (HERITAGE & CRAFT) ─────────── */}
+      {/* â”€â”€ THE AUREVIA DIFFERENCE (HERITAGE & CRAFT) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section why-section">
         <div className="container">
           <div className="why-grid">
@@ -267,7 +267,7 @@ export default function Home() {
                 Where Prestige Meets Complete Discretion.
               </h2>
               <p className="why-lead">
-                For over fifteen years, Aurevia Estates has represented the Kingdom’s most esteemed families, private investors, and diplomatic missions. We view luxury real estate not as transactions, but as custodianship of architectural legacies.
+                For over twelve years, Aurevia Estates has represented Pakistan's most distinguished families, private investors, and diplomatic missions across Islamabad, Lahore, and Rawalpindi. We view luxury real estate not as transactions, but as custodianship of architectural legacies.
               </p>
 
               <div className="why-pillars">
@@ -278,7 +278,7 @@ export default function Home() {
                   },
                   {
                     title: 'Private Wealth & Legal Assurance',
-                    desc: 'End-to-end conveyance, escrow management, and REGA-certified regulatory compliance.'
+                    desc: 'End-to-end conveyance, escrow management, and fully certified regulatory compliance.'
                   },
                   {
                     title: 'Tailored Concierge Onboarding',
@@ -338,7 +338,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BESPOKE SERVICES ─────────────────────────────────── */}
+      {/* â”€â”€ BESPOKE SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section services-section bg-ivory">
         <div className="container">
           <div className="section-header">
@@ -374,14 +374,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PRIVATE ADVISORS ─────────────────────────────────── */}
+      {/* â”€â”€ PRIVATE ADVISORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section advisors-section">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Distinguished Counsel</span>
             <h2 className="section-title">Meet Our Private Advisors</h2>
             <p className="section-subtitle">
-              Seasoned consultants with deep institutional knowledge of the Kingdom’s ultra-prime corridors.
+              Seasoned consultants with deep institutional knowledge of Pakistan's ultra-prime real estate corridors in Islamabad, Lahore, and Rawalpindi.
             </p>
           </div>
 
@@ -426,7 +426,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CLIENT TESTIMONIALS ──────────────────────────────── */}
+      {/* â”€â”€ CLIENT TESTIMONIALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section testimonials-section bg-ivory">
         <div className="container">
           <div className="section-header">
@@ -457,7 +457,7 @@ export default function Home() {
                   <img src={t.image} alt={t.name} loading="lazy" />
                   <div>
                     <strong className="author-name">{t.name}</strong>
-                    <span className="author-role">{t.role} • {t.property}</span>
+                    <span className="author-role">{t.role} â€¢ {t.property}</span>
                   </div>
                 </div>
               </motion.div>
@@ -466,7 +466,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── LATEST ADDITIONS ─────────────────────────────────── */}
+      {/* â”€â”€ LATEST ADDITIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section latest-section">
         <div className="container">
           <div className="section-header">
@@ -483,7 +483,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SIGNATURE LUXURY CTA BANNER ──────────────────────── */}
+      {/* â”€â”€ SIGNATURE LUXURY CTA BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="signature-cta-section">
         <div className="container">
           <motion.div
@@ -510,7 +510,7 @@ export default function Home() {
             </h2>
 
             <p className="cta-text">
-              Whether you wish to discreetly market an iconic residence or acquire prime Saudi real estate, our senior partners are at your service.
+              Whether you wish to discreetly market an iconic residence or acquire premium Pakistan real estate, our senior partners are at your service.
             </p>
 
             <div className="cta-button-group">
@@ -530,3 +530,5 @@ export default function Home() {
     </div>
   );
 }
+
+

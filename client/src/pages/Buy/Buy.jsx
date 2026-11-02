@@ -35,7 +35,7 @@ export default function Buy() {
             <span className="section-label">Acquisitions Portfolio</span>
             <h1 className="serif">Acquire an Architectural Legacy</h1>
             <p>
-              Curated luxury residences and freehold commercial assets across Saudi Arabia's most prestigious corridors.
+              Curated luxury residences and freehold commercial assets across Pakistan's most prestigious corridors in Islamabad, Lahore, and Rawalpindi.
             </p>
             <nav className="breadcrumb">
               <Link to="/">Home</Link>
@@ -51,7 +51,7 @@ export default function Buy() {
         <div className="container buy-perks-inner">
           <div className="buy-perk">
             <Shield size={16} className="perk-icon" />
-            <span>REGA Certified Escrow Conveyance</span>
+            <span>Certified Escrow Conveyance</span>
           </div>
           <div className="buy-perk">
             <Sparkles size={16} className="perk-icon" />
@@ -89,7 +89,7 @@ export default function Buy() {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label className="form-label">Min Price (SAR)</label>
+                  <label className="form-label">Min Price (PKR)</label>
                   <input
                     className="form-control"
                     type="text"
@@ -100,7 +100,7 @@ export default function Buy() {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label className="form-label">Max Price (SAR)</label>
+                  <label className="form-label">Max Price (PKR)</label>
                   <input
                     className="form-control"
                     type="text"

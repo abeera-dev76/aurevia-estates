@@ -303,7 +303,7 @@ async function appendInquiry(data) {
   const sheets = getSheetsClient();
 
   const submissionDate = new Date().toLocaleString('en-GB', {
-    timeZone: 'Asia/Riyadh',
+    timeZone: 'Asia/Karachi',
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
