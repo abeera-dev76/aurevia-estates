@@ -1,36 +1,36 @@
-/* ═══════════════════════════════════════════════════════
-   AUREVIA ESTATES — COMMERCIAL PAGE
-   ═══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════════════
+   COMMERCIAL PAGE — LUXURY STYLING
+   ══════════════════════════════════════════════════════════════════════════════ */
 
-/* ── Hero ───────────────────────────────────────────────── */
+/* ── Hero ── */
 .commercial-hero {
-  background: linear-gradient(135deg, #0b1f2e 0%, #08506f 55%, #086288 100%);
+  background: var(--forest-green-dark);
   position: relative;
   overflow: hidden;
+  padding: 100px 0 80px;
 }
 
 .commercial-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=60')
-    center/cover no-repeat;
-  opacity: 0.1;
+  background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center/cover no-repeat;
+  opacity: 0.15;
   pointer-events: none;
 }
 
-/* ── Filter Section ─────────────────────────────────────── */
+/* ── Filter Section ── */
 .comm-filter-section {
-  background: var(--bg-light);
+  background: var(--ivory);
   padding: 0;
 }
 
 .comm-filter-bar {
   background: var(--white);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  padding: 28px 32px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+  padding: 32px 36px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(197, 164, 109, 0.25);
   border-top: none;
 }
 
@@ -49,53 +49,57 @@
   gap: 12px;
 }
 
-/* ── Results Section ────────────────────────────────────── */
+/* ── Results Section ── */
 .commercial-results {
-  background: var(--bg-light);
-  padding-top: 40px;
+  background: var(--ivory);
+  padding-top: 48px;
+  padding-bottom: 80px;
 }
 
 .results-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   gap: 16px;
   flex-wrap: wrap;
 }
 
 .results-count-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  color: var(--charcoal);
 }
 
-.results-count-text strong { color: var(--dark); }
+.results-count-text strong {
+  color: var(--forest-green);
+  font-weight: 700;
+}
 
-/* ── Clear tag ──────────────────────────────────────────── */
+/* ── Clear tag ── */
 .clear-tag {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--primary);
+  font-weight: 700;
+  color: var(--champagne-gold-dark);
   border: none;
   background: transparent;
   cursor: pointer;
   transition: var(--transition);
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
 }
 
-.clear-tag:hover { color: #065272; }
+.clear-tag:hover { color: var(--forest-green); }
 
-/* ── Empty State ────────────────────────────────────────── */
+/* ── Empty State ── */
 .empty-state {
   text-align: center;
   padding: 80px 24px;
   background: var(--white);
-  border-radius: var(--radius-md);
-  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-xs);
+  border: 1px dashed rgba(197, 164, 109, 0.35);
 }
 
 .empty-icon {
@@ -104,82 +108,90 @@
   line-height: 1;
 }
 
-.empty-state h3 { margin-bottom: 12px; color: var(--dark); }
+.empty-state h3 {
+  margin-bottom: 12px;
+  font-family: var(--font-serif);
+  color: var(--forest-green);
+}
 
 .empty-state p {
-  color: var(--text-muted);
-  max-width: 460px;
+  color: var(--charcoal-muted);
+  max-width: 480px;
   margin: 0 auto;
   font-size: 0.95rem;
 }
 
-/* ── Services Section ───────────────────────────────────── */
+/* ── Services Section ── */
 .commercial-services {
   background: var(--white);
+  padding: 100px 0;
 }
 
 .comm-services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 28px;
   margin-bottom: 64px;
 }
 
 .comm-service-card {
-  padding: 32px 24px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--border);
-  background: var(--bg-light);
+  padding: 36px 26px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(197, 164, 109, 0.22);
+  background: var(--ivory);
   text-align: center;
   transition: var(--transition);
 }
 
 .comm-service-card:hover {
-  border-color: var(--secondary);
-  box-shadow: var(--shadow-md);
+  border-color: var(--champagne-gold);
+  box-shadow: 0 16px 40px rgba(197, 164, 109, 0.16);
   transform: translateY(-4px);
+  background: var(--white);
 }
 
 .comm-service-icon {
   width: 60px;
   height: 60px;
-  border-radius: var(--radius-md);
-  background: rgba(8, 98, 136, 0.1);
-  color: var(--primary);
+  border-radius: var(--radius-xs);
+  background: var(--white);
+  border: 1px solid rgba(197, 164, 109, 0.35);
+  color: var(--champagne-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
   transition: var(--transition);
 }
 
 .comm-service-card:hover .comm-service-icon {
-  background: var(--primary);
-  color: var(--white);
+  background: var(--forest-green);
+  color: var(--champagne-gold);
 }
 
 .comm-service-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--dark);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--forest-green);
   margin-bottom: 10px;
 }
 
 .comm-service-desc {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  font-size: 0.88rem;
+  color: var(--charcoal-muted);
   line-height: 1.65;
 }
 
-/* ── CTA ────────────────────────────────────────────────── */
+/* ── CTA ── */
 .comm-cta {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xs);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  background: var(--forest-green-dark);
+  border: 1px solid rgba(197, 164, 109, 0.35);
 }
 
 .comm-cta-inner {
-  padding: 60px 48px;
+  padding: 72px 48px;
   text-align: center;
   color: var(--white);
   position: relative;
@@ -189,21 +201,22 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(151, 215, 255, 0.1) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(197, 164, 109, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .comm-cta-inner h3 {
   color: var(--white);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  margin-bottom: 14px;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  margin-bottom: 16px;
 }
 
 .comm-cta-inner p {
-  color: rgba(255, 255, 255, 0.75);
-  max-width: 520px;
-  margin: 0 auto 32px;
-  font-size: 1rem;
+  color: rgba(245, 241, 232, 0.8);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .comm-cta-actions {
@@ -213,52 +226,16 @@
   flex-wrap: wrap;
 }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
-  .comm-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .comm-filter-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .comm-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .comm-filter-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .comm-filter-bar {
-    padding: 20px 16px;
-  }
-
-  .comm-filter-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  .comm-services-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .comm-cta-inner {
-    padding: 40px 24px;
-  }
-
-  .results-meta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  .comm-filter-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .comm-services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .comm-cta-actions {
-    flex-direction: column;
-    align-items: center;
-  }
+  .comm-filter-bar { padding: 24px 20px; }
+  .comm-filter-grid { grid-template-columns: 1fr; gap: 16px; }
+  .comm-services-grid { grid-template-columns: 1fr; }
+  .comm-cta-inner { padding: 48px 24px; }
+  .results-meta { flex-direction: column; align-items: flex-start; }
 }

@@ -1,3 +1,52 @@
-.buy-layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; align-items: start; }
-.buy-sidebar { position: sticky; top: 24px; }
-@media (max-width: 1024px) { .buy-layout { grid-template-columns: 1fr; } .buy-sidebar { position: static; } }
+/* ══════════════════════════════════════════════════════════════════════════════
+   BUY PAGE — LUXURY STYLING
+   ══════════════════════════════════════════════════════════════════════════════ */
+.buy-perks-strip {
+  background: var(--forest-green);
+  border-bottom: 1px solid rgba(197, 164, 109, 0.25);
+  padding: 16px 0;
+}
+
+.buy-perks-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.buy-perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--champagne-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.buy-perk .perk-icon {
+  color: var(--champagne-gold);
+}
+
+.buy-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+.buy-sidebar {
+  position: sticky;
+  top: 28px;
+}
+
+@media (max-width: 1080px) {
+  .buy-layout {
+    grid-template-columns: 1fr;
+  }
+  .buy-sidebar {
+    position: static;
+  }
+}

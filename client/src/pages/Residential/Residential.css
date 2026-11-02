@@ -1,42 +1,42 @@
-/* ═══════════════════════════════════════════════════════
-   AUREVIA ESTATES — RESIDENTIAL PAGE
-   ═══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════════════
+   RESIDENTIAL PAGE — LUXURY STYLING
+   ══════════════════════════════════════════════════════════════════════════════ */
 
-/* ── Hero ───────────────────────────────────────────────── */
+/* ── Hero ── */
 .residential-hero {
-  background: linear-gradient(135deg, #0a2235 0%, #086288 60%, #4D8DBA 100%);
+  background: var(--forest-green-dark);
   position: relative;
   overflow: hidden;
+  padding: 100px 0 80px;
 }
 
 .residential-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=60')
-    center/cover no-repeat;
-  opacity: 0.12;
+  background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80') center / cover no-repeat;
+  opacity: 0.15;
   pointer-events: none;
 }
 
-/* ── Filter Section ─────────────────────────────────────── */
+/* ── Filter Section ── */
 .res-filter-section {
-  background: var(--bg-light);
+  background: var(--ivory);
   padding: 0;
 }
 
 .res-filter-bar {
   background: var(--white);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  padding: 28px 32px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+  padding: 32px 36px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(197, 164, 109, 0.25);
   border-top: none;
 }
 
 .res-filter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 20px;
   align-items: end;
 }
@@ -49,53 +49,57 @@
   gap: 12px;
 }
 
-/* ── Results Section ────────────────────────────────────── */
+/* ── Results Section ── */
 .residential-results {
-  background: var(--bg-light);
-  padding-top: 40px;
+  background: var(--ivory);
+  padding-top: 48px;
+  padding-bottom: 80px;
 }
 
 .results-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   gap: 16px;
   flex-wrap: wrap;
 }
 
 .results-count-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  color: var(--charcoal);
 }
 
-.results-count-text strong { color: var(--dark); }
+.results-count-text strong {
+  color: var(--forest-green);
+  font-weight: 700;
+}
 
-/* ── Clear tag ──────────────────────────────────────────── */
+/* ── Clear tag ── */
 .clear-tag {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--primary);
+  font-weight: 700;
+  color: var(--champagne-gold-dark);
   border: none;
   background: transparent;
   cursor: pointer;
   transition: var(--transition);
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
 }
 
-.clear-tag:hover { color: #065272; }
+.clear-tag:hover { color: var(--forest-green); }
 
-/* ── Empty State ────────────────────────────────────────── */
+/* ── Empty State ── */
 .empty-state {
   text-align: center;
   padding: 80px 24px;
   background: var(--white);
-  border-radius: var(--radius-md);
-  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-xs);
+  border: 1px dashed rgba(197, 164, 109, 0.35);
 }
 
 .empty-icon {
@@ -104,16 +108,20 @@
   line-height: 1;
 }
 
-.empty-state h3 { margin-bottom: 12px; color: var(--dark); }
+.empty-state h3 {
+  margin-bottom: 12px;
+  font-family: var(--font-serif);
+  color: var(--forest-green);
+}
 
 .empty-state p {
-  color: var(--text-muted);
-  max-width: 460px;
+  color: var(--charcoal-muted);
+  max-width: 480px;
   margin: 0 auto;
   font-size: 0.95rem;
 }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .res-filter-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -122,23 +130,14 @@
 
 @media (max-width: 768px) {
   .res-filter-bar {
-    padding: 20px 16px;
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 24px 20px;
   }
-
   .res-filter-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-
   .results-meta {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  .res-filter-grid {
-    grid-template-columns: 1fr;
   }
 }
