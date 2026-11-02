@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // Use environment variable if configured (for cross-domain deployments), or fallback to relative '/api'
-const baseURL = import.meta.env.VITE_API_URL || '/api';
+// Normalize baseURL to remove any trailing slashes
+const rawBaseURL = import.meta.env.VITE_API_URL || '/api';
+const baseURL = rawBaseURL.trim().replace(/\/+$/, '');
 
 const api = axios.create({
   baseURL,
